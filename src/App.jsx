@@ -21,21 +21,59 @@ function App() {
   const [wind, setWind] = useState(null)
   const [place, setPlace] = useState(null)
   const [icod, setIcod] = useState(null)
-
+  
   const fetchData = async () => {
     let url = ` https://api.openweathermap.org/data/2.5/weather?q=${city}&units=Metric&appid=${api_key} `;
-
+    
     const response = await fetch(url);
-
+    
     const data = await response.json();
-
+    
+    const ele = document.getElementsByClassName("cityInput");
     setIcod(data.weather[0].icon);
-
+    
     setTemp(data.main.temp);
     setHumidity(data.main.humidity);
     setWind(data.wind.speed);
     setPlace(data.name);
+    ele[0].value = data.name
+
     
+  };
+  
+  
+  
+  
+  
+  const getCurrentCity = () =>
+   {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`
+          );
+          const data = await response.json();
+          setCity(data.address.city);
+          
+        }  
+        )
+
+
+      }
+      
+      
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        const elem = document.getElementsByClassName("cityInput");
+        const elem2 = elem
+        setCity(elem2[0].value);
+
+        elem[0].value = ""
+      };
+
+  useEffect(() => {
+    fetchData()
     switch (icod) {
       case '01n':
       case '01d':
@@ -70,40 +108,7 @@ function App() {
         setW_img(clear_icon)
         break;
     }
-  };
-
-  
-
-
-  const [citym, setCitym] = useState('');
-
-  const getCurrentCity = () => {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        
-          const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`
-          );
-          const data = await response.json();
-          setCity(data.address.city);
-          // setCitym(data.address.city);
-          }  
-    )
     
-  }
-  
-
-  const elem = document.getElementsByClassName("cityInput");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const elem2 = elem
-    setCity(elem2[0].value);
-    elem[0].value = ""
-  };
-
-  useEffect(() => {
-    fetchData()
-  
     
   }, [city])
   

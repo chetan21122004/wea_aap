@@ -16,10 +16,11 @@ html{
 
 .container{
   position: relative;
+  right: 10px;
   top: -40px;
-  width: 410px;
+  width: 370px;
   height: 560px;
-  margin-top: 75px;
+  margin-top: 55px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,7 +33,7 @@ html{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 15px;
   border: none;
   outline: none;
   width: 88px;
@@ -48,7 +49,7 @@ html{
   display: flex;
   justify-content: center;
   gap: 15px;
-  padding-top: 33px;
+  padding-top: 13px;
 }
 
 .top_bar input{
@@ -80,7 +81,8 @@ html{
 
 .weather-img{
   display: flex;
-  height: 190px;
+  width: 224px;
+  background-position: center;
   justify-content: center;
 
 }
@@ -89,14 +91,14 @@ html{
   display: flex;
   justify-content: center;
   color: white;
-  font-size: 70px;
+  font-size: 60px;
   font-weight: 400;
 }
 .weather-loction{
   display: flex;
   justify-content: center;
   color: white;
-  font-size: 67px;
+  font-size: 57px;
   font-weight: 300;
 }
 .place{
@@ -114,23 +116,21 @@ html{
   margin: auto;
   display: flex;
   align-items: center;
-  gap: 15px;
 }
 
 .data{
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 300;
+  margin-bottom: 15px;
 }
 
 .text{
-  font-size: 22px;
   font-weight: 300;
   margin-top: 6px;
 }
 
 .icon{
   margin: 10px;
-  margin-top: 10px;
   height: 60px;
 }
 .hum{
